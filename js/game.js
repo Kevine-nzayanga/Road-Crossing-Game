@@ -67,20 +67,6 @@ enemy.speed = dir * speed;
 
 },this);
 
-  // this.enemy1 = this.add.sprite(250,180, 'enemy');
-  // this.enemy1.setScale(3);
-
-  // the logic setrotation can be used
-  // this.enemy1.rotation = Math.PI/4;
-
-// the logic of "angle ="" can be used
-  // enemy1.setAngle(45);
-  // enemy1.scaleX = 2;
-  // enemy1.scaleY = 2;
-
-  // let enemy2 = this.add.sprite(450,180, 'enemy');
-  // enemy2.displayWidth = 300;
-
 };
 
 
