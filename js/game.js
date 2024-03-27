@@ -50,10 +50,6 @@ gameScene.create = function() {
     }
     });
     
-// this.enemy = this.add.sprite(120, this.sys.game.config.height / 2, 'enemy');
-// this.enemy.flipX = true;
-
-// this.enemies.add(this.enemy);
 
 console.log(this.enemies.getChildren());
 
@@ -145,7 +141,7 @@ if(Phaser.Geom.Intersects.RectangleToRectangle(playerRect, enemyRect)){
     this.isTerminating= true;
 
     this.cameras.main.shake(500);
-    
+
     this.cameras.main.on('camerashakecomplete', function (camera, effect){
       // fade out after shaking
       this.cameras.main.fade(500);
