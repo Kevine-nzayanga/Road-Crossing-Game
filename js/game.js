@@ -71,9 +71,6 @@ enemy.speed = dir * speed;
 
 },this);
 
-
-
-
   // this.enemy1 = this.add.sprite(250,180, 'enemy');
   // this.enemy1.setScale(3);
 
@@ -88,31 +85,13 @@ enemy.speed = dir * speed;
   // let enemy2 = this.add.sprite(450,180, 'enemy');
   // enemy2.displayWidth = 300;
 
-  // enemy.flipX= true;
-
-
-  // depth of 1 brings on top the sprite
-
-  // place sprite in the center
-  // bg.setPosition(640/2, 360/2);
-
-  // let gameW = this.sys.game.config.width;
-  // let gameH = this.sys.game.config.height;
-
-  // console.log(gameW, gameH);
-
-  // console.log(bg);
-  // console.log(this);
-  // console.log(this.enemy1);
-  
 };
 
 
-
-
-
-
 gameScene.update = function() {
+
+  // dont execute if we are terminating
+  if(this.isTerminating) return;
 
   if(this.input.activePointer.isDown){
     this.player.x +=this.playerSPeed
@@ -162,12 +141,21 @@ if(Phaser.Geom.Intersects.RectangleToRectangle(playerRect, enemyRect)){
   };
 
   gameScene.gameOver = function(){
+
     this.isTerminating= true;
+
     this.cameras.main.shake(500);
+    
     this.cameras.main.on('camerashakecomplete', function (camera, effect){
-    this.scene.restart();
+      // fade out after shaking
+      this.cameras.main.fade(500);
 
     },this);
+
+    this.cameras.main.on ('camerafadeoutcomplete', function(camera,effect){
+    this.scene.restart();
+  },this);
+
 
   }
 
